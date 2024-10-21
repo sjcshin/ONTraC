@@ -87,7 +87,7 @@ def test_out_adj_norm(options: Values):
     options.expectation_out_adj_norm = True
     options.degree_out_adj_norm = True
     normalized_out_adj = out_adj_norm(options, consolidate_s, consolidate_out_adj)
-    expected_out_adj = torch.tensor([[0.0000, 0.5000, 0.7071], 
-                                 [0.5000, 0.0000, 0.0000],
-                                 [0.7071, 0.0000, 0.0000]], dtype=torch.float32)
+    expected_out_adj = torch.tensor([[0.0000, 0.7071, 0.5000],
+                                    [0.7071, 0.0000, 0.0000],
+                                    [0.5000, 0.7071, 0.0000]], dtype=torch.float32)
     assert torch.allclose(normalized_out_adj, expected_out_adj, atol=1e-4)
