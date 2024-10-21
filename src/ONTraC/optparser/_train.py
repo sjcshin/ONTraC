@@ -209,7 +209,7 @@ def write_GNN_options_memo(options: Values) -> None:
     if hasattr(options, 'degree_out_adj_norm'):
         info(f'Degree normalization on adjacency matrix: {options.degree_out_adj_norm}')
     if hasattr(options, 'expectation_out_adj_norm'):
-        info(f'Expected random assignment normalization on adjacency matrix: {options.expection_out_adj_norm}')
+        info(f'Expected random assignment normalization on adjacency matrix: {options.expectation_out_adj_norm}')
 
 
 def write_NP_options_memo(options: Values) -> None:
