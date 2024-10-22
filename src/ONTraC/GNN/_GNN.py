@@ -95,7 +95,7 @@ def evaluate(batch_train: SubBatchTrainProtocol, model_name: str) -> None:
     info(message=f'Evaluating process end.')
 
 
-def predict(output_dir: str, batch_train: SubBatchTrainProtocol, dataset: SpatailOmicsDataset,
+def predict(options: Values, output_dir: str, batch_train: SubBatchTrainProtocol, dataset: SpatailOmicsDataset,
             model_name: str) -> Tuple[Optional[np.ndarray], Optional[np.ndarray]]:
     """
     Predict the results of ONTraC model on data.
@@ -145,7 +145,7 @@ def predict(output_dir: str, batch_train: SubBatchTrainProtocol, dataset: Spatai
         # consolidate s
         consolidate_s = torch.cat(consolidate_s_list, dim=0)
         # consolidate out_adj
-        consolidate_out_adj = out_adj_norm(consolidate_s, consolidate_out_adj)
+        consolidate_out_adj = out_adj_norm(options, consolidate_s, consolidate_out_adj)
         consolidate_s_array = consolidate_s.detach().cpu().numpy()
         consolidate_out_adj_array = consolidate_out_adj.detach().cpu().numpy()
         np.savetxt(fname=f'{output_dir}/consolidate_s.csv.gz', X=consolidate_s_array, delimiter=',')

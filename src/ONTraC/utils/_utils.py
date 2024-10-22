@@ -238,4 +238,6 @@ def out_adj_norm(options: Values, consolidate_s: torch.Tensor, consolidate_out_a
         d = torch.einsum('ij->i', consolidate_out_adj)
         d = torch.sqrt(d)[:, None] + 1e-15
         normalized_out_adj = (consolidate_out_adj / d) / d.transpose(0, 1)
+    if not options.expectation_out_adj_norm and not options.degree_out_adj_norm:
+        normalized_out_adj = consolidate_out_adj
     return normalized_out_adj
